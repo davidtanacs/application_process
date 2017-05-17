@@ -3,14 +3,15 @@ import psycopg2
 
 def show_menu():
     choice = input("""
-            Press 1 to Mentors' name\n
-            Press 2 to Mentors' nickname at Miskolc\n
-            Press 3 to Carol's full name and phone number\n
-            Press 4 to hat-owner's full name and phone number\n
-            Press 5 to Markus Schaffarzyk's datas\n
+            Press 1 to see Mentors' name\n
+            Press 2 to see Mentors' nickname at Miskolc\n
+            Press 3 to see Carol's full name and phone number\n
+            Press 4 to see hat-owner's full name and phone number\n
+            Press 5 to see Markus Schaffarzyk's datas\n
             Press 6 to update Jemima Foreman's phone number and see it\n
-            Press 7 to delete Arsenio and his friend from the database""")
-    return choice
+            Press 7 to delete Arsenio and his friend from the database
+            Or 0 to quit""")
+    return int(choice)
 
 
 def connect_to_db():
