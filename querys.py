@@ -14,34 +14,17 @@ def show_menu():
 
 
 def connect_to_db():
-    # setup connection string
     connect_str = "dbname='tanacs' user='tanacs' host='localhost' password='buggyanás'"
-    # use our connection values to establish a connection
     conn = psycopg2.connect(connect_str)
-    # set autocommit option, to do every query when we call it
     conn.autocommit = True
     return conn
 
 
-def mentors_name(conn):
+def make_query(query, conn):
     cursor = conn.cursor()
-    cursor.execute("""SELECT first_name, last_name FROM mentors;""")
+    cursor.execute(query)
     rows = cursor.fetchall()
-    return(print(rows))
-
-
-def miskolc_mentors_nicks(conn):
-    cursor = conn.cursor()
-    cursor.execute("""SELECT nick_name FROM mentors WHERE city='Miskolc';""")
-    rows = cursor.fetchall()
-    return(print(rows))
-
-
-def carols_name_and_phone(conn):
-    cursor = conn.cursor()
-    cursor.execute("""SELECT concat(first_name, ' ', last_name), phone_number FROM applicants WHERE first_name='Carol';""")
-    rows = cursor.fetchall()
-    return(print(rows))
+    return print(rows)
 
 
 def hat_owners_name_and_phone(conn):

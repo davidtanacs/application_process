@@ -5,19 +5,19 @@ def main():
     choice = querys.show_menu()
     conn = querys.connect_to_db()
     if choice == "1":
-        querys.mentors_name(conn)
+        querys.make_query("""SELECT first_name, last_name FROM mentors;""", conn)
     elif choice == "2":
-        querys.miskolc_mentors_nicks(conn)
+        querys.make_query("""SELECT nick_name FROM mentors WHERE city='Miskolc';""", conn)
     elif choice == "3":
-        querys.carols_name_and_phone(conn)
+        querys.make_query("""SELECT concat(first_name, ' ', last_name), phone_number FROM applicants WHERE first_name='Carol';""", conn)
     elif choice == "4":
-        querys.hat_owners_name_and_phone(conn)
+        querys.make_query(conn)
     elif choice == "5":
-        querys.markus_schaffarzyks_datas(conn)
+        querys.make_query(conn)
     elif choice == "6":
-        querys.update_jemima_phone(conn)
+        querys.make_query(conn)
     elif choice == "7":
-        querys.del_arsenio_and_friend(conn)
+        querys.make_query(conn)
 
 if __name__ == '__main__':
     main()
