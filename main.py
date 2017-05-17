@@ -17,7 +17,10 @@ def main():
     elif choice == "5":
         querys.make_query_for_print("""SELECT * FROM applicants WHERE application_code=54823;""", conn)
     elif choice == "6":
-        querys.make_query_for_db_change("""UPDATE ;""", conn)
+        querys.make_query_for_db_change("""UPDATE applicants SET phone_number='003670/223-7459'
+        WHERE first_name='Jemima' and last_name='Foreman';""", conn)
+        querys.make_query_for_print("""SELECT first_name, last_name, phone_number from applicants
+        WHERE first_name='Jemima' and last_name='Foreman';""", conn)
     elif choice == "7":
         querys.make_query(conn)
 

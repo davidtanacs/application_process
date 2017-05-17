@@ -30,12 +30,6 @@ def make_query_for_print(query, conn):
 def make_query_for_db_change(query, conn):
     cursor = conn.cursor()
     cursor.execute(query)
-    return query
-
-
-def update_jemima_phone(conn):
-    pass
-
 
 def del_arsenio_and_friend(conn):
     pass
