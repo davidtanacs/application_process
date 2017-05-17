@@ -20,19 +20,17 @@ def connect_to_db():
     return conn
 
 
-def make_query(query, conn):
+def make_query_for_print(query, conn):
     cursor = conn.cursor()
     cursor.execute(query)
     rows = cursor.fetchall()
-    return print(rows)
+    return print("Here you are: ", rows)
 
 
-def hat_owners_name_and_phone(conn):
-    pass
-
-
-def markus_schaffarzyks_datas(conn):
-    pass
+def make_query_for_db_change(query, conn):
+    cursor = conn.cursor()
+    cursor.execute(query)
+    return query
 
 
 def update_jemima_phone(conn):
