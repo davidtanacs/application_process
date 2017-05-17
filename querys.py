@@ -30,25 +30,28 @@ def mentors_name(conn):
     return(print(rows))
 
 
-def miskolc_mentors_nicks():
+def miskolc_mentors_nicks(conn):
+    cursor = conn.cursor()
+    cursor.execute("""SELECT nick_name FROM mentors WHERE city='Miskolc';""")
+    rows = cursor.fetchall()
+    return(print(rows))
+
+
+def carols_name_and_phone(conn):
     pass
 
 
-def carols_name_and_phone():
+def hat_owners_name_and_phone(conn):
     pass
 
 
-def hat_owners_name_and_phone():
+def markus_schaffarzyks_datas(conn):
     pass
 
 
-def markus_schaffarzyks_datas():
+def update_jemima_phone(conn):
     pass
 
 
-def update_jemima_phone():
-    pass
-
-
-def del_arsenio_and_friend():
+def del_arsenio_and_friend(conn):
     pass
