@@ -5,24 +5,19 @@ def main():
     choice = querys.show_menu()
     conn = querys.connect_to_db()
     if choice == "1":
-        querys.make_query_for_print("""SELECT first_name, last_name FROM mentors;""", conn)
+        querys.show_mentors_name(conn)
     elif choice == "2":
-        querys.make_query_for_print("""SELECT nick_name FROM mentors WHERE city='Miskolc';""", conn)
+        querys.show_mentors_nick_miskolc(conn)
     elif choice == "3":
-        querys.make_query_for_print("""SELECT concat(first_name, ' ', last_name),
-         phone_number FROM applicants WHERE first_name='Carol';""", conn)
+        querys.show_carols_data(conn)
     elif choice == "4":
-        querys.make_query_for_print("""SELECT concat(first_name, ' ', last_name),
-         phone_number FROM  applicants WHERE email like '%@adipiscingenimmi.edu';""", conn)
+        querys.hat_owners_data(conn)
     elif choice == "5":
-        querys.make_query_for_print("""SELECT * FROM applicants WHERE application_code=54823;""", conn)
+        querys.insert_markus_datas(conn)
     elif choice == "6":
-        querys.make_query_for_db_change("""UPDATE applicants SET phone_number='003670/223-7459'
-        WHERE first_name='Jemima' and last_name='Foreman';""", conn)
-        querys.make_query_for_print("""SELECT first_name, last_name, phone_number from applicants
-        WHERE first_name='Jemima' and last_name='Foreman';""", conn)
+        querys.update_jemimas_data(conn)
     elif choice == "7":
-        querys.make_query(conn)
+        querys.del_arsenio_and_friend(conn)
 
 if __name__ == '__main__':
     main()
