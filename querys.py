@@ -38,7 +38,10 @@ def miskolc_mentors_nicks(conn):
 
 
 def carols_name_and_phone(conn):
-    pass
+    cursor = conn.cursor()
+    cursor.execute("""SELECT concat(first_name, ' ', last_name), phone_number FROM applicants WHERE first_name='Carol';""")
+    rows = cursor.fetchall()
+    return(print(rows))
 
 
 def hat_owners_name_and_phone(conn):
