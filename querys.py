@@ -14,6 +14,17 @@ def show_menu():
     return int(choice)
 
 
+def make_query_readable(rows):
+    readable_data = ""
+    for item in rows:
+        for word in item:
+            readable_data += str(word)
+            if word != item[-1]:
+                readable_data += ","
+        readable_data += ";"
+    return readable_data
+
+
 def connect_to_db():
     connect_str = "dbname='tanacs' user='tanacs' host='localhost' password='buggyanás'"
     conn = psycopg2.connect(connect_str)
@@ -25,6 +36,7 @@ def make_query_for_print(query, conn):
     cursor = conn.cursor()
     cursor.execute(query)
     rows = cursor.fetchall()
+    rows = make_query_readable(rows)
     return print("Here you are: ", rows)
 
 
