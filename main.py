@@ -1,5 +1,6 @@
 import querys
 from flask import Flask, request, render_template, redirect, url_for
+import psycopg2
 
 app = Flask(__name__)
 
@@ -14,7 +15,7 @@ def menu():
         try:
             querys.connect_to_db(dbname, user, password)
             connect = 'ok'
-        except:
+        except psycopg2.Error:
             connect = 'not_ok'
     return render_template('main.html', connect=connect)
 
