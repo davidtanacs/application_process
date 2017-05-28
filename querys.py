@@ -20,13 +20,14 @@ def make_query_readable(rows):
         for word in item:
             readable_data += str(word)
             if word != item[-1]:
-                readable_data += ","
-        readable_data += ";"
+                readable_data += ", "
+        if item != rows[-1]:
+            readable_data += " ; "
     return readable_data
 
 
-def connect_to_db():
-    connect_str = "dbname='tanacs' user='tanacs' host='localhost' password='buggyanás'"
+def connect_to_db(dbname, user, password):
+    connect_str = "dbname=%s user=%s host='localhost' password=%s" % (dbname, user, password)
     conn = psycopg2.connect(connect_str)
     conn.autocommit = True
     return conn

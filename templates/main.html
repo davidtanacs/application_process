@@ -8,20 +8,17 @@
     </head>
 
     <body>
-        {% if connect=='get_datas' %}
-            <form action='/'>
-                Please type your database's name:
-                <input type=text name=dbname><br>
-                Please type your username:
-                <input type=text name=user><br>
-                Please type your password:
-                <input type=password name=password><br>
-                <input type=submit Connect>
-            </form>
-        {% else %}
+        {% if connect=='not_ok_yet' %}
             <form action='/connect_to_db'>
             <input type=submit value="Make database connection">
-            </form>
+            </form>       
+        {% elif connect=='not_ok' %}
+        You made mistake(s), sir. Please try again!
+            <form action='/connect_to_db'>
+            <input type=submit value="Try to make database connection">
+            </form>   
+        {% elif connect=='ok' %}
+            ok
         {% endif %}
     </body>
 
