@@ -1,4 +1,5 @@
 import psycopg2
+import csv
 
 
 def show_menu():
@@ -33,12 +34,27 @@ def connect_to_db(dbname, user, password):
     return conn
 
 
-def make_query_for_print(query, conn):
+def make_query(query, conn):
     cursor = conn.cursor()
     cursor.execute(query)
     rows = cursor.fetchall()
-    rows = make_query_readable(rows)
-    return print("Here you are: ", rows)
+    return rows
+
+
+def store_user_datas(dbname, user, password):
+    datas = [dbname, user, password]
+    with open('user_datas.csv', mode='w') as file:
+        for word in datas:
+            file.write(word)
+            file.write('\n')
+
+
+def read_user_datas():
+    datas = []
+    with open('user_datas.csv', mode='r') as file:
+        for word in file:
+            datas.append(word)
+    return datas
 
 
 def make_query_for_db_change(query, conn):
@@ -47,7 +63,10 @@ def make_query_for_db_change(query, conn):
 
 
 def show_mentors_name(conn):
-    make_query_for_print("""SELECT first_name, last_name FROM mentors;""", conn)
+    rows = make_query("""SELECT mentors.first_name, mentors.last_name, schools.name, schools.country
+                        FROM mentors 
+                        LEFT JOIN schools ON mentors.id = schools.id;""", conn)
+    return rows
 
 
 def show_mentors_nick_miskolc(conn):

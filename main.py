@@ -14,6 +14,7 @@ def menu():
     if dbname:
         try:
             querys.connect_to_db(dbname, user, password)
+            querys.store_user_datas(dbname, user, password)
             connect = 'ok'
         except psycopg2.Error:
             connect = 'not_ok'
@@ -24,10 +25,13 @@ def menu():
 def get_datas():
     return render_template('connect_to_database.html')
 
-#@app.route('/')
-#def menu():
 
-
+@app.route('/mentors')
+def show_mentors():
+    datas = querys.read_user_datas()
+    conn = querys.connect_to_db(datas[0], datas[1], datas[2])
+    rows = querys.show_mentors_name(conn)
+    return render_template('mentors.html', rows=rows)
 
 
 
