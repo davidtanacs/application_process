@@ -65,7 +65,8 @@ def make_query_for_db_change(query, conn):
 def show_mentors_name(conn):
     rows = make_query("""SELECT mentors.first_name, mentors.last_name, schools.name, schools.country
                         FROM mentors 
-                        LEFT JOIN schools ON mentors.id = schools.id;""", conn)
+                        LEFT JOIN schools ON mentors.id = schools.id
+                        ORDER BY mentors.id;""", conn)
     return rows
 
 
