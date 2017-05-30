@@ -32,11 +32,6 @@ def read_user_datas():
     return datas
 
 
-def make_query_for_db_change(query, conn):
-    cursor = conn.cursor()
-    cursor.execute(query)
-
-
 def show_mentors_name(conn):
     rows = make_query("""SELECT mentors.first_name, mentors.last_name, schools.name, schools.country
                         FROM mentors 
