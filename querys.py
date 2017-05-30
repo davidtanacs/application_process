@@ -78,19 +78,3 @@ def show_applicants_and_mentors_datas(conn):
                     FROM applicants LEFT JOIN applicants_mentors ON applicants.id = applicants_mentors.applicant_id
                     LEFT JOIN mentors ON applicants_mentors.mentor_id = mentors.id;""", conn)
     return rows
-
-
-def del_arsenio_and_friend(conn):
-    make_query_for_db_change("""DELETE FROM applicants WHERE email LIKE '%mauriseu.net';""", conn)
-
-
-def make_query_readable(rows):
-    readable_data = ""
-    for item in rows:
-        for word in item:
-            readable_data += str(word)
-            if word != item[-1]:
-                readable_data += ", "
-        if item != rows[-1]:
-            readable_data += " ; "
-    return readable_data
