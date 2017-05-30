@@ -65,9 +65,11 @@ def show_all_schools_name(conn):
     return rows
 
 
-def show_carols_data(conn):
-    make_query_for_print("""SELECT concat(first_name, ' ', last_name),
-        phone_number FROM applicants WHERE first_name='Carol';""", conn)
+def count_mentors_by_country(conn):
+    rows = make_query("""SELECT country, COUNT(mentors) FROM mentors
+                        FULL JOIN schools on mentors.city = schools.city
+                        GROUP BY country ORDER BY country;""", conn)
+    return rows
 
 
 def hat_owners_data(conn):

@@ -42,6 +42,14 @@ def show_all_school():
     return render_template('all_school.html', rows=rows)
 
 
+@app.route('/mentors_by_country')
+def show_mentors_by_country():
+    datas = querys.read_user_datas()
+    conn = querys.connect_to_db(datas[0], datas[1], datas[2])
+    rows = querys.count_mentors_by_country(conn)
+    return render_template('mentors_by_country.html', rows=rows)
+
+
 
 
 #def main():
