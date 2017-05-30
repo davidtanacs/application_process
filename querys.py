@@ -1,5 +1,6 @@
 import psycopg2
 import csv
+import os
 
 
 def connect_to_db(dbname, user, password):
@@ -30,6 +31,11 @@ def read_user_datas():
         for word in file:
             datas.append(word)
     return datas
+
+
+def delete_user_datas():
+    os.remove('user_datas.csv')
+        
 
 
 def show_mentors_name(conn):
