@@ -13,20 +13,23 @@
             <input type=submit value="Make database connection">
             </form>       
         {% elif connect=='not_ok' %}
-        You made mistake(s), sir. Please try again!
+        You made mistake(s). Please try again!
             <form action='/connect_to_db'>
             <input type=submit value="Try to make database connection">
             </form>   
         {% elif connect=='ok' %}
             <h1>Main Menu</h1>
-            <ul>
+            <h3><ul>
                 <li><a href='/mentors'>Mentors and schools page</a></li>
                 <li><a href='/all_school'>Mentors and schools page</a></li>
                 <li><a href='/mentors_by_country'>Contacts page1</a></li>
                 <li><a href='/contacts'>Contacts page2</a></li>
-                <li>Applicants page</li>
+                <li><a href='/applicants'>Applicants page</a></li>
                 <li>Applicants and mentors page</li>
             </ul>
+            </h3>
+            <form action='/cancel_db_connection'>
+            <input type=submit value='Cancel database connection and quit from this awesome application.'>
         {% endif %}
     </body>
 
