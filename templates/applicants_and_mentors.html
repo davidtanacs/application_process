@@ -17,7 +17,11 @@
                 <tr>
                     {% for word in entity %}
                         <td>
-                            {{ word }}
+                            {% if word == ' ' %}
+                                None
+                            {% else %}
+                                {{ word }}
+                            {% endif %}
                         </td>
                     {% endfor %}
                 </tr>

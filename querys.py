@@ -35,7 +35,6 @@ def read_user_datas():
 
 def delete_user_datas():
     os.remove('user_datas.csv')
-        
 
 
 def show_mentors_name(conn):
@@ -76,6 +75,7 @@ def show_applicants_datas(conn):
 
 def show_applicants_and_mentors_datas(conn):
     rows = make_query("""SELECT applicants.first_name, applicants.application_code, CONCAT(mentors.first_name, ' ', mentors.last_name)
-                    FROM applicants LEFT JOIN applicants_mentors ON applicants.id = applicants_mentors.applicant_id
+                    FROM applicants FULL JOIN applicants_mentors ON applicants.id = applicants_mentors.applicant_id
                     LEFT JOIN mentors ON applicants_mentors.mentor_id = mentors.id;""", conn)
+    print(rows)
     return rows
