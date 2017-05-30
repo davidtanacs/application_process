@@ -34,6 +34,14 @@ def show_mentors():
     return render_template('mentors.html', rows=rows)
 
 
+@app.route('/all_school')
+def show_all_school():
+    datas = querys.read_user_datas()
+    conn = querys.connect_to_db(datas[0], datas[1], datas[2])
+    rows = querys.show_all_schools_name(conn)
+    return render_template('all_school.html', rows=rows)
+
+
 
 
 #def main():

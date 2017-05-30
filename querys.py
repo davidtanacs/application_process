@@ -15,17 +15,6 @@ def show_menu():
     return int(choice)
 
 
-def make_query_readable(rows):
-    readable_data = ""
-    for item in rows:
-        for word in item:
-            readable_data += str(word)
-            if word != item[-1]:
-                readable_data += ", "
-        if item != rows[-1]:
-            readable_data += " ; "
-    return readable_data
-
 
 def connect_to_db(dbname, user, password):
     connect_str = "dbname=%s user=%s host='localhost' password=%s" % (dbname, user, password)
@@ -69,8 +58,11 @@ def show_mentors_name(conn):
     return rows
 
 
-def show_mentors_nick_miskolc(conn):
-    make_query_for_print("""SELECT nick_name FROM mentors WHERE city='Miskolc';""", conn)
+def show_all_schools_name(conn):
+    rows = make_query("""SELECT mentors.first_name, mentors.last_name, schools.name, schools.country
+                            FROM mentors
+                            RIGHT JOIN schools on mentors.city = schools.city;""", conn)
+    return rows
 
 
 def show_carols_data(conn):
@@ -96,3 +88,15 @@ def update_jemimas_data(conn):
 
 def del_arsenio_and_friend(conn):
     make_query_for_db_change("""DELETE FROM applicants WHERE email LIKE '%mauriseu.net';""", conn)
+
+
+def make_query_readable(rows):
+    readable_data = ""
+    for item in rows:
+        for word in item:
+            readable_data += str(word)
+            if word != item[-1]:
+                readable_data += ", "
+        if item != rows[-1]:
+            readable_data += " ; "
+    return readable_data

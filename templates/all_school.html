@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>
+        All school
+    </title>
+</head>
+
+<body>
+    <table>
+        <tr>
+            <th> First name </th>
+            <th> Last name </th>
+            <th> School </th>
+            <th> Country </th>
+        </tr>
+            {% for entity in rows %}
+                <tr>
+                    {% for word in entity %}
+                        <td>
+                            {{ word }}
+                        </td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+    </table>
+</body>
+</html>
