@@ -77,5 +77,4 @@ def show_applicants_and_mentors_datas(conn):
     rows = make_query("""SELECT applicants.first_name, applicants.application_code, CONCAT(mentors.first_name, ' ', mentors.last_name)
                     FROM applicants FULL JOIN applicants_mentors ON applicants.id = applicants_mentors.applicant_id
                     LEFT JOIN mentors ON applicants_mentors.mentor_id = mentors.id;""", conn)
-    print(rows)
     return rows
