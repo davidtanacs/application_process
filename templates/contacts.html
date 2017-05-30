@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>
+        Contacts
+    </title>
+</head>
+
+<body>
+    <table>
+        <tr>
+            <th> School </th>
+            <th> Contact person </th>
+        </tr>
+            {% for entity in rows %}
+                <tr>
+                    {% for word in entity %}
+                        <td>
+                            {{ word }}
+                        </td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+    </table>
+</body>
+</html>

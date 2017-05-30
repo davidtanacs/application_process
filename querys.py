@@ -67,14 +67,16 @@ def show_all_schools_name(conn):
 
 def count_mentors_by_country(conn):
     rows = make_query("""SELECT country, COUNT(mentors) FROM mentors
-                        FULL JOIN schools on mentors.city = schools.city
+                        FULL JOIN schools ON mentors.city = schools.city
                         GROUP BY country ORDER BY country;""", conn)
     return rows
 
 
-def hat_owners_data(conn):
-    make_query_for_print("""SELECT concat(first_name, ' ', last_name),
-    phone_number FROM  applicants WHERE email like '%@adipiscingenimmi.edu';""", conn)
+def show_school_and_contact_person(conn):
+    rows = make_query("""SELECT name, CONCAT(first_name, ' ', last_name) FROM mentors
+                        INNER JOIN schools ON mentors.id = schools.contact_person
+                        ORDER BY name;""", conn)
+    return rows
 
 
 def insert_markus_datas(conn):

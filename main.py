@@ -50,6 +50,15 @@ def show_mentors_by_country():
     return render_template('mentors_by_country.html', rows=rows)
 
 
+@app.route('/contacts')
+def show_school_and_contact():
+    datas = querys.read_user_datas()
+    conn = querys.connect_to_db(datas[0], datas[1], datas[2])
+    rows = querys.show_school_and_contact_person(conn)
+    return render_template('contacts.html', rows=rows)
+
+
+
 
 
 #def main():
