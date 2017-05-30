@@ -67,16 +67,17 @@ def show_school_and_contact_person(conn):
 
 def show_applicants_datas(conn):
     rows = make_query("""SELECT applicants.first_name, applicants.application_code, applicants_mentors.creation_date
-     FROM applicants JOIN applicants_mentors ON applicants.id = applicants_mentors.applicant_id
-     WHERE applicants_mentors.creation_date > '2016/01/01';""", conn)
+                    FROM applicants JOIN applicants_mentors ON applicants.id = applicants_mentors.applicant_id
+                    WHERE applicants_mentors.creation_date > '2016/01/01'
+                    ORDER BY applicants_mentors.creation_date DESC;""", conn)
     return rows
 
 
-def update_jemimas_data(conn):
-    make_query_for_db_change("""UPDATE applicants SET phone_number='003670/223-7459'
-    WHERE first_name='Jemima' and last_name='Foreman';""", conn)
-    make_query_for_print("""SELECT first_name, last_name, phone_number from applicants
-    WHERE first_name='Jemima' and last_name='Foreman';""", conn)
+def show_applicants_and_mentors_datas(conn):
+    rows = make_query("""SELECT applicants.first_name, applicants.application_code, CONCAT(mentors.first_name, ' ', mentors.last_name)
+                    FROM applicants LEFT JOIN applicants_mentors ON applicants.id = applicants_mentors.applicant_id
+                    LEFT JOIN mentors ON applicants_mentors.mentor_id = mentors.id;""", conn)
+    return rows
 
 
 def del_arsenio_and_friend(conn):

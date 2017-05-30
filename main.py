@@ -66,5 +66,13 @@ def show_applicants():
     return render_template('applicants.html', rows=rows)
 
 
+@app.route('/applicants_and_mentors')
+def show_applicants_and_mentors():
+    datas = querys.read_user_datas()
+    conn = querys.connect_to_db(datas[0], datas[1], datas[2])
+    rows = querys.show_applicants_and_mentors_datas(conn)
+    return render_template('applicants_and_mentors.html', rows=rows)
+
+
 if __name__ == '__main__':
     app.run(debug=True)

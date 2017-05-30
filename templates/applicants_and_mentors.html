@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>
+        Applicants and mentors
+    </title>
+</head>
+
+<body>
+    <table>
+        <tr>
+            <th> First name </th>
+            <th> Application code </th>
+            <th> Mentor's name </th>
+        </tr>
+            {% for entity in rows %}
+                <tr>
+                    {% for word in entity %}
+                        <td>
+                            {{ word }}
+                        </td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+    </table>
+</body>
+</html>
