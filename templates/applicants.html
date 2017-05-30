@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>
+        Applicants
+    </title>
+</head>
+
+<body>
+    <table>
+        <tr>
+            <th> First name </th>
+            <th> Application code </th>
+            <th> Creation date </th>
+        </tr>
+            {% for entity in rows %}
+                <tr>
+                    {% for word in entity %}
+                        <td>
+                            {{ word }}
+                        </td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+    </table>
+</body>
+</html>

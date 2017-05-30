@@ -65,8 +65,11 @@ def show_school_and_contact_person(conn):
     return rows
 
 
-def insert_markus_datas(conn):
-    make_query_for_print("""SELECT * FROM applicants WHERE application_code=54823;""", conn)
+def show_applicants_datas(conn):
+    rows = make_query("""SELECT applicants.first_name, applicants.application_code, applicants_mentors.creation_date
+     FROM applicants JOIN applicants_mentors ON applicants.id = applicants_mentors.applicant_id
+     WHERE applicants_mentors.creation_date > '2016/01/01';""", conn)
+    return rows
 
 
 def update_jemimas_data(conn):

@@ -57,5 +57,14 @@ def show_school_and_contact():
     rows = querys.show_school_and_contact_person(conn)
     return render_template('contacts.html', rows=rows)
 
+
+@app.route('/applicants')
+def show_applicants():
+    datas = querys.read_user_datas()
+    conn = querys.connect_to_db(datas[0], datas[1], datas[2])
+    rows = querys.show_applicants_datas(conn)
+    return render_template('applicants.html', rows=rows)
+
+
 if __name__ == '__main__':
     app.run(debug=True)
