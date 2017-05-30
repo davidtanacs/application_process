@@ -7,17 +7,25 @@ app = Flask(__name__)
 
 @app.route('/')
 def menu():
-    connect = 'not_ok_yet'
-    dbname = request.args.get('dbname')
-    user = request.args.get('user')
-    password = request.args.get('password')
-    if dbname:
+    try:
+        if querys.read_user_datas() is None:
+            connect = 'not_ok_yet'
+        else:
+            connect = "ok"
+            return render_template('main.html', connect=connect)
+    except OSError:
+        dbname = request.args.get('dbname')
+        user = request.args.get('user')
+        password = request.args.get('password')
+    if dbname and user and password:
         try:
             querys.connect_to_db(dbname, user, password)
             querys.store_user_datas(dbname, user, password)
             connect = 'ok'
         except psycopg2.Error:
             connect = 'not_ok'
+    else:
+        connect = 'not_ok_yet'
     return render_template('main.html', connect=connect)
 
 
