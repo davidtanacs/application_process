@@ -1,0 +1,22 @@
+body{
+    background-color: #008e9d;
+    text-align: center;
+}
+h3{
+    font-family: "League Spartan",sans-serif;
+    font-weight: 300;
+    color: #4c4f50;
+    line-height: 27px;
+    font-size: 100%;
+    letter-spacing: .2px;
+}
+h1{
+    font-family: "League Spartan",sans-serif;
+    font-weight: 700;
+    color: #d4363c;
+    font-size: 360%;
+    line-height: 48px;
+    text-transform: uppercase;
+    margin: 0 0 20px;
+    padding: 10px 0 0;
+}
